@@ -20,8 +20,8 @@ cloudinary.config({
 const app = express();
 
 const allowedOrigins = [
- 'https://blogpost-cl1v.onrender.com',
- 
+  'http://localhost:5173',
+  'https://blogpost-cl1v.onrender.com'
 ];
 
 app.use(cors({
