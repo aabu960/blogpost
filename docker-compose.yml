@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend
+    container_name: backend_app
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://aabu960:aabu960@cluster0.6aawg7e.mongodb.net/blog_post_mern
+    networks:
+      - app_network
+
+  frontend:
+    build: ./frontend
+    container_name: frontend_app
+    restart: always
+    ports:
+      - "5173:80"  # Nginx serves from port 80 inside container
+    networks:
+      - app_network
+
+networks:
+  app_network:
