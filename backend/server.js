@@ -19,10 +19,9 @@ cloudinary.config({
 
 const app = express();
 
-// ✅ Updated CORS to allow both local and Render frontend
 const allowedOrigins = [
-  'http://localhost:5173',
-  'https://blogpost-cl1v.onrender.com'
+ 'https://blogpost-cl1v.onrender.com',
+ 
 ];
 
 app.use(cors({
