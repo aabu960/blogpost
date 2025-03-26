@@ -19,6 +19,7 @@ cloudinary.config({
 
 const app = express();
 
+// ✅ Allow both local and deployed frontends
 const allowedOrigins = [
   'http://localhost:5173',
   'https://blogpost-cl1v.onrender.com'
@@ -26,6 +27,7 @@ const allowedOrigins = [
 
 app.use(cors({
   origin: function (origin, callback) {
+    console.log('Incoming Origin:', origin); // helpful debug
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -35,12 +37,13 @@ app.use(cors({
   credentials: true
 }));
 
+// Body parser limits
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 // Connect to MongoDB
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error(err));
 
