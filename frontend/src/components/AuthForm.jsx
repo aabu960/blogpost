@@ -17,8 +17,8 @@ const AuthForm = () => {
     try {
       const url =
         activeTab === 'signin'
-          ? 'http://localhost:5000/auth/signin'
-          : 'http://localhost:5000/auth/signup';
+          ? 'https://poster-backend-5bml.onrender.com/auth/signin'
+          : 'https://poster-backend-5bml.onrender.com/auth/signup';
   
       const payload =
         activeTab === 'signin'
